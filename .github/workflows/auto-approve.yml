@@ -21,7 +21,9 @@ jobs:
       - id: no-actions
         name: no automerge for GitHub actions changes
         run: |
-          if git diff --exit-code origin/main .github; then
+          ls -lah
+          git diff origin/main ./.github
+          if git diff --exit-code origin/main ./.github; then
             exit 1
           fi
       - id: automerge
