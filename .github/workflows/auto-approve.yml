@@ -17,6 +17,13 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - id: no-actions
+        name: no automerge for GitHub actions changes
+        run: |
+          if git diff --exit-code origin/main .github; then
+            exit 1
+          fi
       - id: automerge
         name: automerge
         uses: "pascalgn/automerge-action@v0.15.6"
