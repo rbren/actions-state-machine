@@ -22,6 +22,11 @@ jobs:
         name: no automerge for GitHub actions changes
         run: |
           ls -lah
+          hash git
+          echo "git exists"
+          git status
+          echo "get remotes"
+          git remote -v
           git diff origin/main ./.github
           if git diff --exit-code origin/main ./.github; then
             exit 1
