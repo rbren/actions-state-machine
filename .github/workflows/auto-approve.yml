@@ -24,15 +24,8 @@ jobs:
       - id: no-actions
         name: no automerge for GitHub actions changes
         run: |
-          ls -lah
-          hash git
-          echo "git exists"
           git status
-          echo "get remotes"
-          git remote -v
-          echo "check diff"
-          git diff origin/main ./.github
-          if git diff --exit-code origin/main ./.github; then
+          if ! git diff --exit-code origin/main ./.github; then
             echo "Auto-approve is not allowed when editing GitHub Actions"
             exit 1
           fi
