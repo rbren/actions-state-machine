@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          ref: ${{ github.ref_name }}
+          ref: ${{ github.event.pull_request.head.sha }}
       - id: no-actions
         name: no automerge for GitHub actions changes
         run: |
